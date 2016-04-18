@@ -2,6 +2,21 @@ require "gn/tracker/version"
 
 module Gn
   module Tracker
-    # Your code goes here...
+    class << self
+      attr_accessor :configuration
+    end
+
+    def self.configure
+      self.configuration ||= Configuration.new
+      yield(configuration)
+    end
+
+    class Configuration
+      attr_accessor :application
+
+      def initialize
+        @application = 'GetNinjas'
+      end
+    end
   end
 end
