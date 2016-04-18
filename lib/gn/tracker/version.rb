@@ -1,5 +1,5 @@
 module Gn
-  module Tracker
+  class Tracker
     VERSION = "0.1.0"
   end
 end
