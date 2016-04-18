@@ -6,7 +6,7 @@ module Gn
       attr_writer :configuration
 
       def configuration
-        self.configuration ||= Configuration.new
+        @configuration ||= Configuration.new
       end
     end
 
