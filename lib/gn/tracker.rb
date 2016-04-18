@@ -3,11 +3,14 @@ require "gn/tracker/version"
 module Gn
   module Tracker
     class << self
-      attr_accessor :configuration
+      attr_writer :configuration
+
+      def configuration
+        self.configuration ||= Configuration.new
+      end
     end
 
     def self.configure
-      self.configuration ||= Configuration.new
       yield(configuration)
     end
 
