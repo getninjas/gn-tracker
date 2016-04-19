@@ -22,7 +22,38 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Configuration
+
+```
+Gn::Tracker.configure do |config|
+  config.application = "YourApp" # App name used to identity the event
+  config.host = "tracker.getninjas.com.br" # Tracker's host (Logstash host)
+  config.port = 5228 # Tracker's port (Logstash port)
+end
+```
+
+### Unstruct Event
+Just call `track_unstruct_event` method:
+
+```
+tracker = Gn::Tracker.new
+tracker.track_unstruct_event(message: { a: 1 }, schema: "iglu:br.com.getninjas.com.br/schema/1.0.0")
+```
+
+The attributes `message` and `schema` are mandatory. If you want to send an event for a different application, you can specify an `application`:
+
+```
+tracker = Gn::Tracker.new
+tracker.track_unstruct_event(
+  message: { a: 1 },
+  schema: "iglu:br.com.getninjas.com.br/schema/1.0.0",
+  application: "Kituno"
+)
+```
+
+### Struct Event
+
+-TODO: Not implemented yet
 
 ## Development
 
@@ -37,4 +68,3 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
->>>>>>> Initial commit
