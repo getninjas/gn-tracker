@@ -25,6 +25,8 @@ Or install it yourself as:
 ### Configuration
 
 ```
+require "gn/tracker"
+
 Gn::Tracker.configure do |config|
   config.application = "YourApp" # App name used to identity the event
   config.host = "tracker.getninjas.com.br" # Tracker's host (Logstash host)
@@ -36,6 +38,8 @@ end
 Just call `track_unstruct_event` method:
 
 ```
+require "gn/tracker"
+
 tracker = Gn::Tracker.new
 tracker.track_unstruct_event(message: { a: 1 }, schema: "iglu:br.com.getninjas.com.br/schema/1.0.0")
 ```
@@ -43,6 +47,8 @@ tracker.track_unstruct_event(message: { a: 1 }, schema: "iglu:br.com.getninjas.c
 The attributes `message` and `schema` are mandatory. If you want to send an event for a different application, you can specify an `application`:
 
 ```
+require "gn/tracker"
+
 tracker = Gn::Tracker.new
 tracker.track_unstruct_event(
   message: { a: 1 },
