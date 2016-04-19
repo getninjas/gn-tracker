@@ -23,7 +23,7 @@ module Gn
       )
     end
 
-    def track(message:, schema:, application: self.class.configuration.application)
+    def track_unstruct_event(message:, schema:, application: self.class.configuration.application)
       @logger.info LogStash::Event.new(
         message: message.to_json,
         application: application,
