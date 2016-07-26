@@ -18,8 +18,8 @@ module Gn
     def initialize
       @logger = LogStashLogger.new(
         type: self.class.configuration.type,
-        host: self.class.configuration.host,
-        port: self.class.configuration.port
+        path: self.class.configuration.path,
+        sync: true
       )
     end
 
@@ -32,10 +32,10 @@ module Gn
     end
 
     class Configuration
-      attr_accessor :application, :type, :port, :host
+      attr_accessor :application, :path
 
       def initialize
-        @application, @type, @port, @host = 'GetNinjas', :udp, 5228, '0.0.0.0'
+        @application, @path = 'GetNinjas', :file, '/tmp/logstash'
       end
     end
   end

@@ -29,8 +29,7 @@ require "gn/tracker"
 
 Gn::Tracker.configure do |config|
   config.application = "YourApp" # App name used to identity the event
-  config.host = "tracker.getninjas.com.br" # Tracker's host (Logstash host)
-  config.port = 5228 # Tracker's port (Logstash port)
+  config.path = "/var/www/getninjas/shared/logstash" # File which stores some logs
 end
 ```
 
