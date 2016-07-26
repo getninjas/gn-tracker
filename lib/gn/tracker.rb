@@ -17,9 +17,9 @@ module Gn
 
     def initialize
       @logger = LogStashLogger.new(
-        type: self.class.configuration.type,
-        path: self.class.configuration.path,
-        sync: true
+        type: :file,
+        sync: true,
+        path: self.class.configuration.path
       )
     end
 
@@ -35,7 +35,7 @@ module Gn
       attr_accessor :application, :path
 
       def initialize
-        @application, @path = 'GetNinjas', :file, '/tmp/logstash'
+        @application, @path = 'GetNinjas', '/tmp/logstash'
       end
     end
   end
