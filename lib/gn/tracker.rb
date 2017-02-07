@@ -27,7 +27,8 @@ module Gn
       @logger.info LogStash::Event.new(
         message: message.to_json,
         application: application,
-        schema: schema
+        schema: schema,
+        true_timestamp: Time.now
       )
     end
 
