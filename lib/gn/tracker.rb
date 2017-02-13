@@ -28,7 +28,7 @@ module Gn
         message: message.to_json,
         application: application,
         schema: schema,
-        true_timestamp: (Time.now.to_i * 1000)
+        true_timestamp: (Time.now.to_f * 1000).to_s
       )
     end
 
