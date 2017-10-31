@@ -56,6 +56,20 @@ tracker.track_unstruct_event(
 )
 ```
 
+You can pass the argument `true_timestamp`:
+
+```
+require "gn/tracker"
+
+tracker = Gn::Tracker.new
+tracker.track_unstruct_event(
+  message: { a: 1 },
+  schema: "iglu:br.com.getninjas.com.br/schema/1.0.0",
+  application: "Kituno",
+  true_timestamp: "1509471096577"
+)
+```
+
 ### Struct Event
 
 -TODO: Not implemented yet
