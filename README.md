@@ -56,7 +56,7 @@ tracker.track_unstruct_event(
 )
 ```
 
-You can pass the argument `true_timestamp`:
+You can pass the argument `true_timestamp` (in milliseconds):
 
 ```
 require "gn/tracker"
