@@ -23,13 +23,19 @@ module Gn
       )
     end
 
-    def track_unstruct_event(message:, schema:, application: self.class.configuration.application)
-      @logger.info LogStash::Event.new(
+    def track_unstruct_event(
+      message:,
+      schema:,
+      application: self.class.configuration.application,
+      true_timestamp: DateTime.now.strftime('%Q')
+    )
+      event = LogStash::Event.new(
         message: message.to_json,
         application: application,
         schema: schema,
-        true_timestamp: (Time.now.to_f * 1000).floor.to_s
+        true_timestamp: true_timestamp
       )
+      @logger.info event
     end
 
     class Configuration
