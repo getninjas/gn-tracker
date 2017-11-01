@@ -37,12 +37,7 @@ describe Gn::Tracker, '#track_unstruct_event' do
 
   context 'not passing true_timestamp argument' do
     before do
-      date_time_now = double
-
-      allow(date_time_now).to receive(:strftime)
-        .with('%Q').and_return '1483315200000'
-
-      allow(DateTime).to receive(:now).and_return date_time_now
+      allow(DateTime).to receive(:now).and_return DateTime.new(2017, 1, 2)
     end
 
     it 'generates a default one to generate the log line' do
