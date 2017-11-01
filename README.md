@@ -56,6 +56,20 @@ tracker.track_unstruct_event(
 )
 ```
 
+You can pass the argument `true_timestamp` (in milliseconds):
+
+```
+require "gn/tracker"
+
+tracker = Gn::Tracker.new
+tracker.track_unstruct_event(
+  message: { a: 1 },
+  schema: "iglu:br.com.getninjas.com.br/schema/1.0.0",
+  application: "Kituno",
+  true_timestamp: "1509471096577"
+)
+```
+
 ### Struct Event
 
 -TODO: Not implemented yet
@@ -66,10 +80,15 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+## Tests
+
+We use `RSpec` so, simply run `rspec spec`.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/gn-tracker/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+4. Make sure you have created the necessary tests
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create a new Pull Request
