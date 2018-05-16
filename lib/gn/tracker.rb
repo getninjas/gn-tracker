@@ -27,13 +27,15 @@ module Gn
       message:,
       schema:,
       application: self.class.configuration.application,
-      true_timestamp: DateTime.now.strftime('%Q')
+      true_timestamp: DateTime.now.strftime('%Q'),
+      context: []
     )
       event = LogStash::Event.new(
         message: message.to_json,
         application: application,
         schema: schema,
-        true_timestamp: true_timestamp
+        true_timestamp: true_timestamp,
+        context: context.to_json
       )
       @logger.info event
     end
