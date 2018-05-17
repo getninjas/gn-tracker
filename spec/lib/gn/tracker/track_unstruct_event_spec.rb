@@ -30,7 +30,7 @@ describe Gn::Tracker, '#track_unstruct_event' do
           schema: schema,
           application: application,
           true_timestamp: true_timestamp,
-          context: "[]",
+          contexts: "[]",
           '@timestamp' => now,
           '@version' => '1'
         )
@@ -54,7 +54,7 @@ describe Gn::Tracker, '#track_unstruct_event' do
           schema: schema,
           application: application,
           true_timestamp: '1483315200000',
-          context: "[]",
+          contexts: "[]",
           '@timestamp' => now,
           '@version' => '1'
         )
@@ -62,16 +62,16 @@ describe Gn::Tracker, '#track_unstruct_event' do
     end
   end
 
-  context 'context argument' do
+  context 'contexts argument' do
     before do
       allow(DateTime).to receive(:now).and_return DateTime.new(2017, 1, 2)
     end
 
-    context 'passing the context argument' do
+    context 'passing the contexts argument' do
       let(:message_context) { { is_answer_meaningless: "yes" } }
       let(:schema_context) { 'iglu:br.com.getninjas.com.br/schema_context/1.0.0' }
 
-      let(:context) do
+      let(:contexts) do
         [
           {
             schema: schema_context,
@@ -85,7 +85,7 @@ describe Gn::Tracker, '#track_unstruct_event' do
           message: message,
           schema: schema,
           application: application,
-          context: context
+          contexts: contexts
         )
 
         expect(LogStash::Event).to have_received(:new).with(
@@ -93,14 +93,14 @@ describe Gn::Tracker, '#track_unstruct_event' do
           schema: schema,
           application: application,
           true_timestamp: '1483315200000',
-          context: context.to_json,
+          contexts: contexts.to_json,
           '@timestamp' => now,
           '@version' => '1'
         )
       end
     end
 
-    context 'not passing the true_timestamp argument' do
+    context 'not passing the contexts argument' do
       it 'uses a empty array to generate the log line' do
         subject.track_unstruct_event(
           message: message,
@@ -113,7 +113,7 @@ describe Gn::Tracker, '#track_unstruct_event' do
           schema: schema,
           application: application,
           true_timestamp: '1483315200000',
-          context: "[]",
+          contexts: "[]",
           '@timestamp' => now,
           '@version' => '1'
         )
