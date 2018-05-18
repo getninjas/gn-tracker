@@ -70,6 +70,31 @@ tracker.track_unstruct_event(
 )
 ```
 
+and pass the argument `contexts` (array with aditional contexts):
+
+```
+require "gn/tracker"
+
+contexts = [
+  {
+    schema: "iglu:br.com.getninjas.com.br/another_schema/1.0.0",
+    message: { b: 2 }
+  },
+  {
+    schema: "iglu:br.com.getninjas.com.br/third_schema/1.0.0",
+    message: { c: 3 }
+  }
+]
+
+tracker = Gn::Tracker.new
+tracker.track_unstruct_event(
+  message: { a: 1 },
+  schema: "iglu:br.com.getninjas.com.br/schema/1.0.0",
+  application: "Kituno",
+  contexts: contexts
+)
+```
+
 ### Struct Event
 
 -TODO: Not implemented yet
