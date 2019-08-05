@@ -11,7 +11,7 @@ require "gn/tracker"
 
 Gn::Tracker.configure do |config|
   config.application = "YourApp"
-  config.path = "/var/www/example/sharedgstash"
+  config.path = "/var/www/example/shared/logstash"
 end
 ```
 
