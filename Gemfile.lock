@@ -39,10 +39,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.9)
+  bundler
   gn-tracker!
   pry-byebug
-  rake (~> 12.3)
+  rake
   rspec
 
 BUNDLED WITH
