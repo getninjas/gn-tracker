@@ -44,7 +44,7 @@ module Gn
       attr_accessor :application, :path
 
       def initialize
-        @application, @path = 'GetNinjas', '/tmp/logstash'
+        @application, @path = 'APP_NAME', '/tmp/logstash'
       end
     end
   end
