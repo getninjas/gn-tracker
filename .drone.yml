@@ -20,7 +20,6 @@ steps:
 
 - name: test
   pull: default
-  depends_on: [ build ]
   image: ruby:2.6.3
   commands:
   - bundle install --with test --deployment --jobs=4 --path vendor/bundle
