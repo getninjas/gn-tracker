@@ -1,0 +1,16 @@
+---
+kind: pipeline
+name: GnTracker
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: test
+  image: ruby:2.6.3
+  commands:
+  - bundle install --with test --jobs=4 --path vendor/bundle
+  - bundle exec rspec spec
+
+...
