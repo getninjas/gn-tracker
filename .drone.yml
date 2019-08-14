@@ -7,56 +7,10 @@ platform:
   arch: amd64
 
 steps:
-  #- name: restore-cache
-  #pull: default
-  #image: drillster/drone-volume-cache
-  #settings:
-  #  mount:
-  #  - ./vendor
-  #  restore: true
-  #volumes:
-  #- name: Build Cache
-  #  path: /cache
-
 - name: test
-  pull: default
   image: ruby:2.6.3
   commands:
   - bundle install --with test --deployment --jobs=4 --path vendor/bundle
   - bundle exec rspec spec
-
-    #- name: rebuild-cache
-    #pull: default
-    #image: drillster/drone-volume-cache
-    #depends_on: [ build ]
-    #failure: ignore
-    #settings:
-    #mount:
-    #- ./vendor
-    #rebuild: true
-    #volumes:
-    #- name: Build Cache
-    #path: /cache
-
-  notify:
-    secrets: [ slack_webhook ]
-    image: plugins/slack
-    channel: _tech
-    webhook: slack_webhook
-    username: droneci
-  environment:
-    SLACK_WEBHOOK:
-      from_secret: slack_webhook
-  when:
-    branch:
-    - master
-    status:
-    - success
-    - failure
-
-      #volumes:
-      #- name: Build Cache
-      #host:
-      #path: /tmp
 
 ...
