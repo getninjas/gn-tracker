@@ -44,7 +44,8 @@ module Gn
       attr_accessor :application, :path
 
       def initialize
-        @application, @path = 'GetNinjas', '/tmp/logstash'
+        @application = ENV.fetch('GN_TRACKER_APPLICATION') { 'GN_TRACKER' }
+        @path = '/tmp/logstash'
       end
     end
   end
